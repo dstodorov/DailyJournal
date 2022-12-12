@@ -8,11 +8,29 @@
 
     <Button
         android:id="@+id/btnTraining"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="training"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnDiary"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="diary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTraining" />
+
+    <Button
+        android:id="@+id/btnEating"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="eating"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDiary" />
 </androidx.constraintlayout.widget.ConstraintLayout>

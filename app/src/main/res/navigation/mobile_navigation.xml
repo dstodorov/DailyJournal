@@ -9,10 +9,14 @@
         android:id="@+id/navigation_home"
         android:name="com.dst.dailyjournal.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_navigation_training"
-            app:destination="@id/navigation_training" />
+            app:destination="@id/navigation_training"
+            app:launchSingleTop="false" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_diary"
+            app:destination="@id/navigation_diary" />
     </fragment>
 
     <fragment
@@ -31,4 +35,9 @@
         android:name="com.dst.dailyjournal.ui.training.TrainingFragment"
         android:label="@string/title_training"
         tools:layout="@layout/fragment_training" />
+    <fragment
+        android:id="@+id/navigation_diary"
+        android:name="com.dst.dailyjournal.ui.diary.DiaryFragment"
+        android:label="@string/title_diary"
+        tools:layout="@layout/fragment_diary" />
 </navigation>

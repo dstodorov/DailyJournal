@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentHomeBinding
 
@@ -42,6 +43,9 @@ class HomeFragment : Fragment() {
 
         binding.btnTraining.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_navigation_training)
+        }
+        binding.btnDiary.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_diary)
         }
     }
 
