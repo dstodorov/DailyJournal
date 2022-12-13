@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_diary"
             app:destination="@id/navigation_diary" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_eating"
+            app:destination="@id/navigation_eating" />
     </fragment>
 
     <fragment
@@ -39,5 +42,11 @@
         android:id="@+id/navigation_diary"
         android:name="com.dst.dailyjournal.ui.diary.DiaryFragment"
         android:label="@string/title_diary"
+        tools:layout="@layout/fragment_diary" />
+
+    <fragment
+        android:id="@+id/navigation_eating"
+        android:name="com.dst.dailyjournal.ui.eating.EatingFragment"
+        android:label="@string/title_eating"
         tools:layout="@layout/fragment_diary" />
 </navigation>

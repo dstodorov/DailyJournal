@@ -47,6 +47,9 @@ class HomeFragment : Fragment() {
         binding.btnDiary.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_navigation_diary)
         }
+        binding.btnEating.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_home_to_navigation_eating)
+        }
     }
 
     override fun onDestroyView() {
