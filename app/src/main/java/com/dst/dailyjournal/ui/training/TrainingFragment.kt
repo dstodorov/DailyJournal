@@ -32,6 +32,10 @@ class TrainingFragment : Fragment() {
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
+
+        trainingViewModel.currentDate.observe(viewLifecycleOwner) {
+            binding.tvTrainingDate.text = it
+        }
 //
 //        val textView: TextView = binding.textTraining
 //        trainingViewModel.text.observe(viewLifecycleOwner) {
@@ -42,7 +46,50 @@ class TrainingFragment : Fragment() {
         }
         binding.btnStrengthNone.setOnClickListener {
             binding.strengthNoneLine.visibility = View.VISIBLE
+            binding.strengthLightLine.visibility = View.GONE
+            binding.strengthStrongLine.visibility = View.GONE
         }
+
+        binding.btnStrengthLight.setOnClickListener {
+            binding.strengthNoneLine.visibility = View.GONE
+            binding.strengthLightLine.visibility = View.VISIBLE
+            binding.strengthStrongLine.visibility = View.GONE
+        }
+
+        binding.btnStrengthStrong.setOnClickListener {
+            binding.strengthNoneLine.visibility = View.GONE
+            binding.strengthLightLine.visibility = View.GONE
+            binding.strengthStrongLine.visibility = View.VISIBLE
+        }
+
+        binding.btnCardioLight.setOnClickListener {
+            binding.cardioLightLine.visibility = View.VISIBLE
+            binding.cardioModerateLine.visibility = View.GONE
+            binding.cardioVigorousLine.visibility = View.GONE
+        }
+
+        binding.btnCardioModerate.setOnClickListener {
+            binding.cardioLightLine.visibility = View.GONE
+            binding.cardioModerateLine.visibility = View.VISIBLE
+            binding.cardioVigorousLine.visibility = View.GONE
+        }
+
+        binding.btnCardioVigorous.setOnClickListener {
+            binding.cardioLightLine.visibility = View.GONE
+            binding.cardioModerateLine.visibility = View.GONE
+            binding.cardioVigorousLine.visibility = View.VISIBLE
+        }
+
+        binding.btnStepsNotDone.setOnClickListener {
+            binding.stepsNotDoneLine.visibility = View.VISIBLE
+            binding.stepsDoneLine.visibility = View.GONE
+        }
+
+        binding.btnStepsDone.setOnClickListener {
+            binding.stepsNotDoneLine.visibility = View.GONE
+            binding.stepsDoneLine.visibility = View.VISIBLE
+        }
+
 
         return root
     }
