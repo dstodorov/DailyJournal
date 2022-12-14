@@ -37,16 +37,29 @@
         android:id="@+id/navigation_training"
         android:name="com.dst.dailyjournal.ui.training.TrainingFragment"
         android:label="@string/title_training"
-        tools:layout="@layout/fragment_training" />
+        tools:layout="@layout/fragment_training" >
+        <action
+            android:id="@+id/action_navigation_training_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_diary"
         android:name="com.dst.dailyjournal.ui.diary.DiaryFragment"
         android:label="@string/title_diary"
-        tools:layout="@layout/fragment_diary" />
+        tools:layout="@layout/fragment_diary" >
+        <action
+            android:id="@+id/action_navigation_diary_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_eating"
         android:name="com.dst.dailyjournal.ui.eating.EatingFragment"
         android:label="@string/title_eating"
-        tools:layout="@layout/fragment_diary" />
+        tools:layout="@layout/fragment_diary" >
+        <action
+            android:id="@+id/action_navigation_eating_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home" />
+    </fragment>
 </navigation>

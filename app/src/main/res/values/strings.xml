@@ -8,4 +8,21 @@
     <string name="title_training">Training</string>
     <string name="title_diary">Diary</string>
     <string name="title_eating">Eating</string>
+    <string name="strength_training_label">Strength Training</string>
+    <string name="strength_training_type_none">NONE</string>
+    <string name="strength_training_type_light">LIGHT</string>
+    <string name="strength_training_type_strong">STRONG</string>
+    <string name="cardio_training_label">Cardio Training</string>
+    <string name="steps_label">Steps</string>
+    <string name="button_save_text">save</string>
+    <string name="cardio_training_type_light">LIGHT</string>
+    <string name="cardio_training_type_moderate">MODERATE</string>
+    <string name="cardio_training_type_vigorous">VIGOROUS</string>
+    <string name="steps_not_done">NOT DONE</string>
+    <string name="steps_done">DONE</string>
+    <string name="description_back_button">Back button</string>
+    <string name="description_steps_image">Steps Image Description</string>
+    <string name="description_cardio_training_image">Cardio Training Image</string>
+    <string name="description_strength_training_image">Strength Training Image</string>
+    <string name="sample_date_text">24 Aug 2022</string>
 </resources>

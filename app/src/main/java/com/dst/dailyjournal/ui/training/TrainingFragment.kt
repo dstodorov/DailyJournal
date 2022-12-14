@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentTrainingBinding
 import com.dst.dailyjournal.ui.settings.SettingsViewModel
@@ -31,10 +32,16 @@ class TrainingFragment : Fragment() {
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
-
-        val textView: TextView = binding.textTraining
-        trainingViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+//
+//        val textView: TextView = binding.textTraining
+//        trainingViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_training_to_navigation_home)
+        }
+        binding.btnStrengthNone.setOnClickListener {
+            binding.strengthNoneLine.visibility = View.VISIBLE
         }
 
         return root
