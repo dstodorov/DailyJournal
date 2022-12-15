@@ -13,10 +13,5 @@ class TrainingViewModel : ViewModel() {
         value = LocalDateTime.now().format(formatter)
     }
 
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is training Fragment"
-    }
-    val text: LiveData<String> = _text
     val currentDate: LiveData<String> = _currentDate
 }

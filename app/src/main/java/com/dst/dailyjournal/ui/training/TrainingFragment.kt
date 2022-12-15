@@ -36,11 +36,13 @@ class TrainingFragment : Fragment() {
         trainingViewModel.currentDate.observe(viewLifecycleOwner) {
             binding.tvTrainingDate.text = it
         }
-//
-//        val textView: TextView = binding.textTraining
-//        trainingViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
+
+        setupOnClickListeners()
+
+        return root
+    }
+
+    private fun setupOnClickListeners() {
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_training_to_navigation_home)
         }
@@ -89,9 +91,6 @@ class TrainingFragment : Fragment() {
             binding.stepsNotDoneLine.visibility = View.GONE
             binding.stepsDoneLine.visibility = View.VISIBLE
         }
-
-
-        return root
     }
 
     override fun onDestroyView() {

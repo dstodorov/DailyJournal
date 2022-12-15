@@ -74,14 +74,14 @@
     <LinearLayout
         android:id="@+id/layoutStrengthTraining"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/strengthHorizontalLine">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthNone"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -95,9 +95,10 @@
             android:shadowRadius="5"
             android:text="@string/strength_training_type_none"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthLight"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -111,9 +112,10 @@
             android:shadowRadius="5"
             android:text="@string/strength_training_type_light"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthStrong"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -127,7 +129,8 @@
             android:shadowRadius="5"
             android:text="@string/strength_training_type_strong"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
     </LinearLayout>
 
     <View
@@ -201,14 +204,14 @@
     <LinearLayout
         android:id="@+id/layoutCardioTraining"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardioHorizontalLine">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioLight"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -222,9 +225,10 @@
             android:shadowRadius="5"
             android:text="@string/cardio_training_type_light"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioModerate"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -238,9 +242,10 @@
             android:shadowRadius="5"
             android:text="@string/cardio_training_type_moderate"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioVigorous"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -254,7 +259,8 @@
             android:shadowRadius="5"
             android:text="@string/cardio_training_type_vigorous"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
     </LinearLayout>
 
     <View
@@ -325,19 +331,30 @@
         app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
         app:layout_constraintStart_toEndOf="@id/ivStepsImage" />
 
+    <EditText
+        android:id="@+id/etSteps"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:hint="0"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <LinearLayout
         android:id="@+id/layoutSteps"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stepsHorizontalLine">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStepsNotDone"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -349,9 +366,10 @@
             android:shadowRadius="5"
             android:text="@string/steps_not_done"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStepsDone"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
@@ -365,7 +383,8 @@
             android:shadowRadius="5"
             android:text="@string/steps_done"
             android:textColor="@color/white"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:cornerRadius="0dp"/>
     </LinearLayout>
 
     <View
@@ -399,11 +418,11 @@
         app:layout_constraintTop_toTopOf="@id/btnSave" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"
         style="button"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="48dp"
         android:backgroundTint="#DADADA"
         android:text="@string/button_save_text"
         android:textColor="@color/black"
