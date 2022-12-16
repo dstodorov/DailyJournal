@@ -1,10 +1,12 @@
 package com.dst.dailyjournal.ui.training
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -22,12 +24,10 @@ class TrainingFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val trainingViewModel =
-            ViewModelProvider(this).get(TrainingViewModel::class.java)
+        val trainingViewModel = ViewModelProvider(this).get(TrainingViewModel::class.java)
 
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
 
@@ -39,6 +39,11 @@ class TrainingFragment : Fragment() {
 
         setupOnClickListeners()
 
+
+        trainingViewModel.strengthTrainingStatus.observe(viewLifecycleOwner) {
+            binding
+        }
+
         return root
     }
 
@@ -46,51 +51,69 @@ class TrainingFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_training_to_navigation_home)
         }
-        binding.btnStrengthNone.setOnClickListener {
-            binding.strengthNoneLine.visibility = View.VISIBLE
-            binding.strengthLightLine.visibility = View.GONE
-            binding.strengthStrongLine.visibility = View.GONE
-        }
-
         binding.btnStrengthLight.setOnClickListener {
-            binding.strengthNoneLine.visibility = View.GONE
-            binding.strengthLightLine.visibility = View.VISIBLE
-            binding.strengthStrongLine.visibility = View.GONE
+            setClickedButtonStyle(binding.btnStrengthLight)
+            setDefaultButtonStyle(binding.btnStrengthModerate)
+            setDefaultButtonStyle(binding.btnStrengthHeavy)
         }
 
-        binding.btnStrengthStrong.setOnClickListener {
-            binding.strengthNoneLine.visibility = View.GONE
-            binding.strengthLightLine.visibility = View.GONE
-            binding.strengthStrongLine.visibility = View.VISIBLE
+        binding.btnStrengthModerate.setOnClickListener {
+            setDefaultButtonStyle(binding.btnStrengthLight)
+            setClickedButtonStyle(binding.btnStrengthModerate)
+            setDefaultButtonStyle(binding.btnStrengthHeavy)
+        }
+
+        binding.btnStrengthHeavy.setOnClickListener {
+            setDefaultButtonStyle(binding.btnStrengthLight)
+            setDefaultButtonStyle(binding.btnStrengthModerate)
+            setClickedButtonStyle(binding.btnStrengthHeavy)
         }
 
         binding.btnCardioLight.setOnClickListener {
-            binding.cardioLightLine.visibility = View.VISIBLE
-            binding.cardioModerateLine.visibility = View.GONE
-            binding.cardioVigorousLine.visibility = View.GONE
+            setClickedButtonStyle(binding.btnCardioLight)
+            setDefaultButtonStyle(binding.btnCardioModerate)
+            setDefaultButtonStyle(binding.btnCardioVigorous)
         }
 
         binding.btnCardioModerate.setOnClickListener {
-            binding.cardioLightLine.visibility = View.GONE
-            binding.cardioModerateLine.visibility = View.VISIBLE
-            binding.cardioVigorousLine.visibility = View.GONE
+            setDefaultButtonStyle(binding.btnCardioLight)
+            setClickedButtonStyle(binding.btnCardioModerate)
+            setDefaultButtonStyle(binding.btnCardioVigorous)
         }
 
         binding.btnCardioVigorous.setOnClickListener {
-            binding.cardioLightLine.visibility = View.GONE
-            binding.cardioModerateLine.visibility = View.GONE
-            binding.cardioVigorousLine.visibility = View.VISIBLE
+            setDefaultButtonStyle(binding.btnCardioLight)
+            setDefaultButtonStyle(binding.btnCardioModerate)
+            setClickedButtonStyle(binding.btnCardioVigorous)
         }
 
         binding.btnStepsNotDone.setOnClickListener {
-            binding.stepsNotDoneLine.visibility = View.VISIBLE
-            binding.stepsDoneLine.visibility = View.GONE
+            setClickedButtonStyle(binding.btnStepsNotDone)
+            setDefaultButtonStyle(binding.btnStepsDone)
         }
 
         binding.btnStepsDone.setOnClickListener {
-            binding.stepsNotDoneLine.visibility = View.GONE
-            binding.stepsDoneLine.visibility = View.VISIBLE
+            setDefaultButtonStyle(binding.btnStepsNotDone)
+            setClickedButtonStyle(binding.btnStepsDone)
         }
+    }
+
+    private fun setClickedButtonStyle(buttonView: Button) {
+        buttonView.setBackgroundColor(
+            resources.getColor(
+                R.color.button_clicked_color, null
+            )
+        )
+        buttonView.setTextColor(resources.getColor(R.color.black, null))
+    }
+
+    private fun setDefaultButtonStyle(buttonView: Button) {
+        buttonView.setBackgroundColor(
+            resources.getColor(
+                R.color.button_default_color, null
+            )
+        )
+        buttonView.setTextColor(resources.getColor(R.color.white, null))
     }
 
     override fun onDestroyView() {

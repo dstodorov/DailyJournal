@@ -82,92 +82,47 @@
         app:layout_constraintTop_toBottomOf="@id/strengthHorizontalLine">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStrengthNone"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FF5722"
-            android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:text="@string/strength_training_type_none"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            app:cornerRadius="0dp"/>
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthLight"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#FF9800"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:text="@string/strength_training_type_light"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp"/>
+            app:cornerRadius="5dp"
+            app:rippleColor="@color/white" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStrengthStrong"
+            android:id="@+id/btnStrengthModerate"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#5A5A5A"
+            android:padding="0dp"
+            android:text="@string/strength_training_type_moderate"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:rippleColor="@color/white" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStrengthHeavy"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
-            android:text="@string/strength_training_type_strong"
+            android:text="@string/strength_training_type_heavy"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp"/>
+            app:rippleColor="@color/white" />
     </LinearLayout>
-
-    <View
-        android:id="@+id/strengthNoneLine"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="14dp"
-        android:alpha="1"
-        android:background="#FF5722"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutStrengthTraining" />
-
-    <View
-        android:id="@+id/strengthLightLine"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:alpha="1"
-        android:background="#FF9800"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutStrengthTraining" />
-
-
-    <View
-        android:id="@+id/strengthStrongLine"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="10dp"
-        android:alpha="1"
-        android:background="#8BC34A"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutStrengthTraining" />
 
     <ImageView
         android:id="@+id/ivCardioImage"
@@ -217,33 +172,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#FF5722"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:text="@string/cardio_training_type_light"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp"/>
+            app:cornerRadius="5dp"
+            app:rippleColor="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioModerate"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:backgroundTint="#FF9800"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:text="@string/cardio_training_type_moderate"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp"/>
+            app:cornerRadius="5dp"
+            app:rippleColor="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioVigorous"
@@ -251,53 +202,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:text="@string/cardio_training_type_vigorous"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp"/>
+            app:cornerRadius="5dp"
+            app:rippleColor="@color/white" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/cardioLightLine"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="14dp"
-        android:alpha="1"
-        android:background="#FF5722"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutCardioTraining" />
-
-    <View
-        android:id="@+id/cardioModerateLine"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:alpha="1"
-        android:background="#FF9800"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutCardioTraining" />
-
-
-    <View
-        android:id="@+id/cardioVigorousLine"
-        android:layout_width="90dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="10dp"
-        android:alpha="1"
-        android:background="#8BC34A"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutCardioTraining" />
 
     <ImageView
         android:id="@+id/ivStepsImage"
@@ -357,55 +270,31 @@
             android:id="@+id/btnStepsNotDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
             android:layout_weight="1"
-            android:backgroundTint="#FF5722"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:text="@string/steps_not_done"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp" />
+            app:cornerRadius="5dp"
+            app:rippleColor="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStepsDone"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
             android:layout_weight="1"
-            android:backgroundTint="#8BC34A"
+            android:backgroundTint="#5A5A5A"
             android:padding="0dp"
-            android:shadowColor="#5A5A5A"
-            android:shadowDx="0"
-            android:shadowDy="0"
-            android:shadowRadius="5"
             android:text="@string/steps_done"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:cornerRadius="0dp"/>
+            app:cornerRadius="5dp"
+            app:rippleColor="@color/white" />
     </LinearLayout>
-
-    <View
-        android:id="@+id/stepsNotDoneLine"
-        android:layout_width="154dp"
-        android:layout_height="2dp"
-        android:alpha="1"
-        android:background="#FF5722"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutSteps" />
-
-    <View
-        android:id="@+id/stepsDoneLine"
-        android:layout_width="154dp"
-        android:layout_height="2dp"
-        android:alpha="1"
-        android:background="#8BC34A"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutSteps" />
 
     <ImageView
         android:id="@+id/btnBack"

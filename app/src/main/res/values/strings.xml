@@ -9,9 +9,9 @@
     <string name="title_diary">Diary</string>
     <string name="title_eating">Eating</string>
     <string name="strength_training_label">Strength Training</string>
-    <string name="strength_training_type_none">NONE</string>
     <string name="strength_training_type_light">LIGHT</string>
-    <string name="strength_training_type_strong">STRONG</string>
+    <string name="strength_training_type_moderate">MODERATE</string>
+    <string name="strength_training_type_heavy">HEAVY</string>
     <string name="cardio_training_label">Cardio Training</string>
     <string name="steps_label">Daily Steps</string>
     <string name="button_save_text">save</string>

@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="button_clicked_color">#FFD596</color>
+    <color name="button_default_color">#5A5A5A</color>
+
 </resources>
