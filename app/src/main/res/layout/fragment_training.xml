@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#353535"
     android:padding="@dimen/master_padding"
-    tools:context=".ui.training.TrainingFragment"
-    android:background="#353535">
+    tools:context=".ui.training.TrainingFragment">
 
     <TextView
         android:id="@+id/tvTrainingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:text="@string/title_training"
         android:textColor="@color/button_clicked_color"
         android:textSize="16sp"
@@ -37,14 +37,14 @@
         android:layout_height="2dp"
         android:layout_marginTop="4dp"
         android:alpha="1"
-        android:background="#03A9F4"
+        android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/tvTrainingLabel" />
 
     <ImageView
         android:id="@+id/ivStrengthImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="@dimen/master_margin_top"
+        android:layout_marginTop="64dp"
         android:contentDescription="@string/description_strength_training_image"
         android:src="@drawable/strength"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,6 @@
         android:text="@string/strength_training_label"
         android:textColor="@color/button_clicked_color"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/strengthHorizontalLine"
         app:layout_constraintStart_toEndOf="@id/ivStrengthImage" />
 
@@ -131,7 +130,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="@dimen/master_margin_top"
         android:contentDescription="@string/description_cardio_training_image"
-        android:src="@drawable/cardio"
+        android:src="@drawable/heart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutStrengthTraining" />
 
@@ -153,7 +152,6 @@
         android:text="@string/cardio_training_label"
         android:textColor="@color/button_clicked_color"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/cardioHorizontalLine"
         app:layout_constraintStart_toEndOf="@id/ivCardioImage" />
 
@@ -241,7 +239,6 @@
         android:text="@string/steps_label"
         android:textColor="@color/button_clicked_color"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
         app:layout_constraintStart_toEndOf="@id/ivStepsImage" />
 
@@ -249,14 +246,14 @@
         android:id="@+id/etSteps"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_clicked_color"
         android:hint="0"
         android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textSize="12sp"
         android:textColor="@color/button_clicked_color"
         android:textColorHint="@color/button_clicked_color"
-        android:backgroundTint="@color/button_clicked_color"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -316,9 +313,13 @@
         style="button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#4CAF50"
+        android:shadowColor="@color/black"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="2"
         android:text="@string/button_save_text"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

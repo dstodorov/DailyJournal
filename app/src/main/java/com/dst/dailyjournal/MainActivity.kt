@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 else -> hideBottomNav()
             }
         }
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 
