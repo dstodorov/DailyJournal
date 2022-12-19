@@ -14,4 +14,8 @@ import com.dst.dailyjournal.training.domain.model.Training
 @TypeConverters(Converters::class)
 abstract class DailyJournalDatabase : RoomDatabase() {
     abstract val trainingDao: TrainingDao
+
+    companion object {
+        const val DATABASE_NAME = "DailyJournalDB"
+    }
 }

@@ -1,19 +1,21 @@
 package com.dst.dailyjournal.ui.training
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentTrainingBinding
-import com.dst.dailyjournal.ui.settings.SettingsViewModel
+import com.dst.dailyjournal.training.domain.model.CardioTrainingState
+import com.dst.dailyjournal.training.domain.model.StepsState
+import com.dst.dailyjournal.training.domain.model.StrengthTrainingState
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TrainingFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,12 +24,14 @@ class TrainingFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val trainingViewModel: TrainingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val trainingViewModel = ViewModelProvider(this).get(TrainingViewModel::class.java)
+        //val trainingViewModel = ViewModelProvider(this).get(TrainingViewModel::class.java)
+
 
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
 
@@ -37,12 +41,9 @@ class TrainingFragment : Fragment() {
             binding.tvTrainingDate.text = it
         }
 
+        setClickedButtonStyle(binding.btnStepsNotDone)
+
         setupOnClickListeners()
-
-
-        trainingViewModel.strengthTrainingStatus.observe(viewLifecycleOwner) {
-            binding
-        }
 
         return root
     }
@@ -52,50 +53,121 @@ class TrainingFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_training_to_navigation_home)
         }
         binding.btnStrengthLight.setOnClickListener {
-            setClickedButtonStyle(binding.btnStrengthLight)
-            setDefaultButtonStyle(binding.btnStrengthModerate)
-            setDefaultButtonStyle(binding.btnStrengthHeavy)
+            switchStrengthButton(
+                clickedButton = binding.btnStrengthLight,
+                defaultButtonOne = binding.btnStrengthModerate,
+                defaultButtonTwo = binding.btnStrengthHeavy,
+                toState = StrengthTrainingState.LIGHT
+            )
         }
 
         binding.btnStrengthModerate.setOnClickListener {
-            setDefaultButtonStyle(binding.btnStrengthLight)
-            setClickedButtonStyle(binding.btnStrengthModerate)
-            setDefaultButtonStyle(binding.btnStrengthHeavy)
+            switchStrengthButton(
+                clickedButton = binding.btnStrengthModerate,
+                defaultButtonOne = binding.btnStrengthLight,
+                defaultButtonTwo = binding.btnStrengthHeavy,
+                toState = StrengthTrainingState.MODERATE
+            )
         }
 
         binding.btnStrengthHeavy.setOnClickListener {
-            setDefaultButtonStyle(binding.btnStrengthLight)
-            setDefaultButtonStyle(binding.btnStrengthModerate)
-            setClickedButtonStyle(binding.btnStrengthHeavy)
+            switchStrengthButton(
+                clickedButton = binding.btnStrengthHeavy,
+                defaultButtonOne = binding.btnStrengthModerate,
+                defaultButtonTwo = binding.btnStrengthLight,
+                toState = StrengthTrainingState.HEAVY
+            )
         }
 
         binding.btnCardioLight.setOnClickListener {
-            setClickedButtonStyle(binding.btnCardioLight)
-            setDefaultButtonStyle(binding.btnCardioModerate)
-            setDefaultButtonStyle(binding.btnCardioVigorous)
+            switchCardioButton(
+                clickedButton = binding.btnCardioLight,
+                defaultButtonOne = binding.btnCardioModerate,
+                defaultButtonTwo = binding.btnCardioVigorous,
+                toState = CardioTrainingState.LIGHT
+            )
         }
 
         binding.btnCardioModerate.setOnClickListener {
-            setDefaultButtonStyle(binding.btnCardioLight)
-            setClickedButtonStyle(binding.btnCardioModerate)
-            setDefaultButtonStyle(binding.btnCardioVigorous)
+
+            switchCardioButton(
+                clickedButton = binding.btnCardioModerate,
+                defaultButtonOne = binding.btnCardioLight,
+                defaultButtonTwo = binding.btnCardioVigorous,
+                toState = CardioTrainingState.MODERATE
+            )
         }
 
         binding.btnCardioVigorous.setOnClickListener {
-            setDefaultButtonStyle(binding.btnCardioLight)
-            setDefaultButtonStyle(binding.btnCardioModerate)
-            setClickedButtonStyle(binding.btnCardioVigorous)
+            switchCardioButton(
+                clickedButton = binding.btnCardioVigorous,
+                defaultButtonOne = binding.btnCardioLight,
+                defaultButtonTwo = binding.btnCardioModerate,
+                toState = CardioTrainingState.VIGOROUS
+            )
         }
 
         binding.btnStepsNotDone.setOnClickListener {
-            setClickedButtonStyle(binding.btnStepsNotDone)
-            setDefaultButtonStyle(binding.btnStepsDone)
+            switchStepsButton(
+                clickedButton = binding.btnStepsNotDone,
+                defaultButton = binding.btnStepsDone, StepsState.NOT_DONE
+            )
         }
 
         binding.btnStepsDone.setOnClickListener {
-            setDefaultButtonStyle(binding.btnStepsNotDone)
-            setClickedButtonStyle(binding.btnStepsDone)
+            switchStepsButton(
+                clickedButton = binding.btnStepsDone,
+                defaultButton = binding.btnStepsNotDone, StepsState.DONE
+            )
         }
+    }
+
+    private fun switchStrengthButton(
+        clickedButton: Button,
+        defaultButtonOne: Button,
+        defaultButtonTwo: Button,
+        toState: StrengthTrainingState
+    ) {
+
+        if (trainingViewModel.strengthTrainingState == toState) {
+            trainingViewModel.strengthTrainingState = StrengthTrainingState.NONE
+            setDefaultButtonStyle(clickedButton)
+            return
+        }
+
+        setClickedButtonStyle(clickedButton)
+        setDefaultButtonStyle(defaultButtonOne)
+        setDefaultButtonStyle(defaultButtonTwo)
+        trainingViewModel.strengthTrainingState = toState
+    }
+
+    private fun switchCardioButton(
+        clickedButton: Button,
+        defaultButtonOne: Button,
+        defaultButtonTwo: Button,
+        toState: CardioTrainingState
+    ) {
+
+        if (trainingViewModel.cardioTrainingState == toState) {
+            trainingViewModel.cardioTrainingState = CardioTrainingState.NONE
+            setDefaultButtonStyle(clickedButton)
+            return
+        }
+
+        setClickedButtonStyle(clickedButton)
+        setDefaultButtonStyle(defaultButtonOne)
+        setDefaultButtonStyle(defaultButtonTwo)
+        trainingViewModel.cardioTrainingState = toState
+    }
+
+    private fun switchStepsButton(
+        clickedButton: Button,
+        defaultButton: Button,
+        toState: StepsState
+    ) {
+        setClickedButtonStyle(clickedButton)
+        setDefaultButtonStyle(defaultButton)
+        trainingViewModel.dailyStepsStatus = toState
     }
 
     private fun setClickedButtonStyle(buttonView: Button) {
