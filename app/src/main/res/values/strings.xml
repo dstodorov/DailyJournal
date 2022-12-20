@@ -25,4 +25,5 @@
     <string name="description_cardio_training_image">Cardio Training Image</string>
     <string name="description_strength_training_image">Strength Training Image</string>
     <string name="sample_date_text">24 Aug 2022</string>
+    <string name="empty_field" />
 </resources>
