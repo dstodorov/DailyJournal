@@ -83,7 +83,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthLight"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -97,7 +96,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthModerate"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -112,7 +110,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStrengthHeavy"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -167,7 +164,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioLight"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -181,7 +177,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioModerate"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -197,7 +192,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCardioVigorous"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -283,7 +277,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStepsDone"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
