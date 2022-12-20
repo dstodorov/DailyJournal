@@ -6,46 +6,117 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dst.dailyjournal.R
+import com.dst.dailyjournal.core.util.Converters
 import com.dst.dailyjournal.databinding.FragmentTrainingBinding
 import com.dst.dailyjournal.training.domain.model.CardioTrainingState
 import com.dst.dailyjournal.training.domain.model.StepsState
 import com.dst.dailyjournal.training.domain.model.StrengthTrainingState
+import com.dst.dailyjournal.training.domain.model.Training
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 @AndroidEntryPoint
 class TrainingFragment : Fragment() {
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private var _binding: FragmentTrainingBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
-    private val trainingViewModel: TrainingViewModel by viewModels()
+    private val trainingViewModel: TrainingViewModel by activityViewModels()
+    private lateinit var training: Training
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //val trainingViewModel = ViewModelProvider(this).get(TrainingViewModel::class.java)
-
 
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
 
         val root: View = binding.root
-
-        trainingViewModel.currentDate.observe(viewLifecycleOwner) {
-            binding.tvTrainingDate.text = it
-        }
-
-        setClickedButtonStyle(binding.btnStepsNotDone)
-
         setupOnClickListeners()
 
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        trainingViewModel.loadCurrentDayTraining()
+
+        trainingViewModel.currentTraining.observe(viewLifecycleOwner) {
+            training = it
+            updateTrainingScreen()
+        }
+    }
+
+    private fun updateTrainingScreen() {
+        val dateString = training.trainingDate.dateToString("dd MMM yyyy")
+        binding.tvTrainingDate.text = dateString
+        binding.etSteps.setText(training.dailySteps.toString())
+
+        when (training.strengthTraining) {
+            StrengthTrainingState.NONE -> setDefaultButtonStyle(binding.btnStrengthLight)
+            StrengthTrainingState.LIGHT -> switchStrengthButton(
+                binding.btnStrengthLight,
+                binding.btnStrengthModerate,
+                binding.btnStrengthHeavy,
+                StrengthTrainingState.LIGHT
+            )
+            StrengthTrainingState.MODERATE -> switchStrengthButton(
+                binding.btnStrengthModerate,
+                binding.btnStrengthLight,
+                binding.btnStrengthHeavy,
+                StrengthTrainingState.MODERATE
+            )
+            StrengthTrainingState.HEAVY -> switchStrengthButton(
+                binding.btnStrengthHeavy,
+                binding.btnStrengthLight,
+                binding.btnStrengthModerate,
+                StrengthTrainingState.HEAVY
+            )
+        }
+
+        when (training.cardioTraining) {
+            CardioTrainingState.NONE -> setDefaultButtonStyle(binding.btnCardioLight)
+            CardioTrainingState.LIGHT -> switchCardioButton(
+                binding.btnCardioLight,
+                binding.btnCardioModerate,
+                binding.btnCardioVigorous,
+                CardioTrainingState.LIGHT
+            )
+            CardioTrainingState.MODERATE -> switchCardioButton(
+                binding.btnCardioModerate,
+                binding.btnCardioLight,
+                binding.btnCardioVigorous,
+                CardioTrainingState.MODERATE
+            )
+            CardioTrainingState.VIGOROUS -> switchCardioButton(
+                binding.btnCardioVigorous,
+                binding.btnCardioLight,
+                binding.btnCardioModerate,
+                CardioTrainingState.VIGOROUS
+            )
+        }
+
+        when (training.dailyStepsStatus) {
+            StepsState.NOT_DONE -> switchStepsButton(
+                binding.btnStepsNotDone,
+                binding.btnStepsDone,
+                StepsState.NOT_DONE
+            )
+            StepsState.DONE -> switchStepsButton(
+                binding.btnStepsDone,
+                binding.btnStepsNotDone,
+                StepsState.DONE
+            )
+        }
     }
 
     private fun setupOnClickListeners() {
@@ -110,15 +181,28 @@ class TrainingFragment : Fragment() {
         binding.btnStepsNotDone.setOnClickListener {
             switchStepsButton(
                 clickedButton = binding.btnStepsNotDone,
-                defaultButton = binding.btnStepsDone, StepsState.NOT_DONE
+                defaultButton = binding.btnStepsDone,
+                toState = StepsState.NOT_DONE
             )
         }
 
         binding.btnStepsDone.setOnClickListener {
             switchStepsButton(
                 clickedButton = binding.btnStepsDone,
-                defaultButton = binding.btnStepsNotDone, StepsState.DONE
+                defaultButton = binding.btnStepsNotDone,
+                toState = StepsState.DONE
             )
+        }
+
+        binding.etSteps.addTextChangedListener {
+            if (binding.etSteps.text.isNotBlank())
+                trainingViewModel.dailyStepsCount = binding.etSteps.text.toString().toInt()
+        }
+
+        binding.btnSave.setOnClickListener {
+            trainingViewModel.saveTraining()
+            Snackbar.make(binding.root, "Saved", Snackbar.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_navigation_training_to_navigation_home)
         }
     }
 
@@ -191,6 +275,12 @@ class TrainingFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun Date.dateToString(format: String): String {
+        val dateFormatter = SimpleDateFormat(format, Locale.getDefault())
+
+        return dateFormatter.format(this)
     }
 
 }

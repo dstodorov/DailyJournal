@@ -6,10 +6,11 @@ import java.util.Date
 
 @Entity(tableName = "trainings")
 data class Training(
-    @PrimaryKey(autoGenerate = true) val id: Int?,
-    val trainingDate: Date,
-    val strengthTraining: String = "none",
-    val cardioTraining: String = "none",
-    val dailyStepsStatus: String?,
-    val dailySteps: Int?
+    @PrimaryKey(autoGenerate = true)
+    val id: Int?,
+    var trainingDate: Date,
+    var strengthTraining: StrengthTrainingState = StrengthTrainingState.NONE,
+    var cardioTraining: CardioTrainingState = CardioTrainingState.NONE,
+    var dailyStepsStatus: StepsState = StepsState.NOT_DONE,
+    var dailySteps: Int?
 )

@@ -7,6 +7,7 @@ import com.dst.dailyjournal.core.data.data_source.DailyJournalDatabase
 import com.dst.dailyjournal.training.data.repository.TrainingRepositoryImpl
 import com.dst.dailyjournal.training.domain.repository.TrainingRepository
 import com.dst.dailyjournal.training.domain.use_case.AddTraining
+import com.dst.dailyjournal.training.domain.use_case.GetTrainingByDate
 import com.dst.dailyjournal.training.domain.use_case.TrainingUseCases
 import dagger.Module
 import dagger.Provides
@@ -38,7 +39,8 @@ object AppModule {
     @Singleton
     fun provideTrainingUseCases(repository: TrainingRepository): TrainingUseCases {
         return TrainingUseCases(
-            AddTraining(repository)
+            AddTraining(repository),
+            GetTrainingByDate(repository)
         )
     }
 }
