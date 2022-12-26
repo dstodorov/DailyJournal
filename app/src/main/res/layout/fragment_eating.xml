@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#424242"
-    android:padding="@dimen/master_padding">
+    android:background="@drawable/eating_background"
+    android:padding="@dimen/master_padding"
+    tools:context=".ui.eating.EatingFragment">
 
 
     <TextView
@@ -72,7 +73,7 @@
         app:layout_constraintStart_toEndOf="@id/ivEatingImage" />
 
     <ImageView
-        android:id="@+id/ivStrengthStatusDone"
+        android:id="@+id/ivEatingStatusDone"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginBottom="10dp"
@@ -82,7 +83,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
-        android:id="@+id/ivStrenthStatusNotDone"
+        android:id="@+id/ivEatingStatusNotDone"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginBottom="10dp"
@@ -102,7 +103,7 @@
         app:layout_constraintTop_toBottomOf="@id/eatingHorizontalLine">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStrengthLight"
+            android:id="@+id/btnEatingBad"
             style="@style/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +111,7 @@
             android:text="@string/eating_type_bad" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStrengthModerate"
+            android:id="@+id/btnEatingAverage"
             style="@style/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,7 +121,7 @@
             android:text="@string/eating_type_average" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStrengthHeavy"
+            android:id="@+id/btnEatingGreat"
             style="@style/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

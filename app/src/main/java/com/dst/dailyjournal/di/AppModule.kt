@@ -3,6 +3,11 @@ package com.dst.dailyjournal.di
 import android.app.Application
 import androidx.room.Room
 import com.dst.dailyjournal.core.data.data_source.DailyJournalDatabase
+import com.dst.dailyjournal.eating.data.repository.EatingRepositoryImpl
+import com.dst.dailyjournal.eating.domain.repository.EatingRepository
+import com.dst.dailyjournal.eating.domain.use_case.AddEating
+import com.dst.dailyjournal.eating.domain.use_case.EatingUseCases
+import com.dst.dailyjournal.eating.domain.use_case.GetEatingByDate
 import com.dst.dailyjournal.training.data.repository.TrainingRepositoryImpl
 import com.dst.dailyjournal.training.domain.repository.TrainingRepository
 import com.dst.dailyjournal.training.domain.use_case.AddTraining
@@ -40,6 +45,21 @@ object AppModule {
         return TrainingUseCases(
             AddTraining(repository),
             GetTrainingByDate(repository)
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideEatingRepository(database: DailyJournalDatabase): EatingRepository {
+        return EatingRepositoryImpl(database.eatingDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideEatingUseCases(repository: EatingRepository): EatingUseCases {
+        return EatingUseCases(
+            AddEating(repository),
+            GetEatingByDate(repository)
         )
     }
 }

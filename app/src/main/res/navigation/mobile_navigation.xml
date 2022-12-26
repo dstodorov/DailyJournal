@@ -56,10 +56,9 @@
         android:id="@+id/navigation_eating"
         android:name="com.dst.dailyjournal.ui.eating.EatingFragment"
         android:label="@string/title_eating"
-        tools:layout="@layout/fragment_diary" >
+        tools:layout="@layout/fragment_eating" >
         <action
             android:id="@+id/action_navigation_eating_to_navigation_home"
-            app:destination="@id/navigation_home"
-            app:popUpTo="@id/navigation_home" />
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>

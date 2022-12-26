@@ -9,5 +9,5 @@ data class Eating(
     @PrimaryKey(autoGenerate = true)
     val id: Int?,
     var eatingDate: Date,
-    var eatingState: EatingState
+    var eatingState: EatingState = EatingState.NONE
 )
