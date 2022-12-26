@@ -18,8 +18,8 @@
     <string name="cardio_training_type_light">LIGHT</string>
     <string name="cardio_training_type_moderate">MODERATE</string>
     <string name="cardio_training_type_vigorous">VIGOROUS</string>
-    <string name="steps_not_done">NOT DONE</string>
-    <string name="steps_done">DONE</string>
+    <string name="steps_not_completed">NOT COMPLETED</string>
+    <string name="steps_completed">COMPLETED</string>
     <string name="description_back_button">Back button</string>
     <string name="description_steps_image">Steps Image Description</string>
     <string name="description_cardio_training_image">Cardio Training Image</string>

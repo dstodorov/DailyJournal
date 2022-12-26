@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dst.dailyjournal.R
-import com.dst.dailyjournal.core.util.Converters
 import com.dst.dailyjournal.databinding.FragmentTrainingBinding
 import com.dst.dailyjournal.training.domain.model.CardioTrainingState
 import com.dst.dailyjournal.training.domain.model.StepsState
@@ -20,8 +19,6 @@ import com.dst.dailyjournal.training.domain.model.Training
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 @AndroidEntryPoint
@@ -35,7 +32,7 @@ class TrainingFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentTrainingBinding.inflate(inflater, container, false)
 
@@ -62,67 +59,102 @@ class TrainingFragment : Fragment() {
         binding.etSteps.setText(training.dailySteps.toString())
 
         when (training.strengthTraining) {
-            StrengthTrainingState.NONE -> setDefaultButtonStyle(binding.btnStrengthLight)
-            StrengthTrainingState.LIGHT -> switchStrengthButton(
-                binding.btnStrengthLight,
-                binding.btnStrengthModerate,
-                binding.btnStrengthHeavy,
-                StrengthTrainingState.LIGHT
-            )
-            StrengthTrainingState.MODERATE -> switchStrengthButton(
-                binding.btnStrengthModerate,
-                binding.btnStrengthLight,
-                binding.btnStrengthHeavy,
-                StrengthTrainingState.MODERATE
-            )
-            StrengthTrainingState.HEAVY -> switchStrengthButton(
-                binding.btnStrengthHeavy,
-                binding.btnStrengthLight,
-                binding.btnStrengthModerate,
-                StrengthTrainingState.HEAVY
-            )
+            StrengthTrainingState.NONE -> {
+                changeActivityStatus(binding.ivStrengthStatusNotDone, binding.ivStrengthStatusDone)
+            }
+            StrengthTrainingState.LIGHT -> {
+                switchStrengthButton(
+                    binding.btnStrengthLight,
+                    binding.btnStrengthModerate,
+                    binding.btnStrengthHeavy,
+                    StrengthTrainingState.LIGHT
+                )
+                changeActivityStatus(binding.ivStrengthStatusDone, binding.ivStrengthStatusNotDone)
+            }
+            StrengthTrainingState.MODERATE -> {
+                switchStrengthButton(
+                    binding.btnStrengthModerate,
+                    binding.btnStrengthLight,
+                    binding.btnStrengthHeavy,
+                    StrengthTrainingState.MODERATE
+                )
+                changeActivityStatus(binding.ivStrengthStatusDone, binding.ivStrengthStatusNotDone)
+            }
+            StrengthTrainingState.HEAVY -> {
+                switchStrengthButton(
+                    binding.btnStrengthHeavy,
+                    binding.btnStrengthLight,
+                    binding.btnStrengthModerate,
+                    StrengthTrainingState.HEAVY
+                )
+                changeActivityStatus(binding.ivStrengthStatusDone, binding.ivStrengthStatusNotDone)
+            }
         }
 
         when (training.cardioTraining) {
-            CardioTrainingState.NONE -> setDefaultButtonStyle(binding.btnCardioLight)
-            CardioTrainingState.LIGHT -> switchCardioButton(
-                binding.btnCardioLight,
-                binding.btnCardioModerate,
-                binding.btnCardioVigorous,
-                CardioTrainingState.LIGHT
-            )
-            CardioTrainingState.MODERATE -> switchCardioButton(
-                binding.btnCardioModerate,
-                binding.btnCardioLight,
-                binding.btnCardioVigorous,
-                CardioTrainingState.MODERATE
-            )
-            CardioTrainingState.VIGOROUS -> switchCardioButton(
-                binding.btnCardioVigorous,
-                binding.btnCardioLight,
-                binding.btnCardioModerate,
-                CardioTrainingState.VIGOROUS
-            )
+            CardioTrainingState.NONE -> {
+                changeActivityStatus(binding.ivCardioStatusNotDone, binding.ivCardioStatusDone)
+            }
+            CardioTrainingState.LIGHT -> {
+                switchCardioButton(
+                    binding.btnCardioLight,
+                    binding.btnCardioModerate,
+                    binding.btnCardioVigorous,
+                    CardioTrainingState.LIGHT
+                )
+                changeActivityStatus(binding.ivCardioStatusDone, binding.ivCardioStatusNotDone)
+            }
+            CardioTrainingState.MODERATE -> {
+                switchCardioButton(
+                    binding.btnCardioModerate,
+                    binding.btnCardioLight,
+                    binding.btnCardioVigorous,
+                    CardioTrainingState.MODERATE
+                )
+                changeActivityStatus(binding.ivCardioStatusDone, binding.ivCardioStatusNotDone)
+            }
+            CardioTrainingState.VIGOROUS -> {
+                switchCardioButton(
+                    binding.btnCardioVigorous,
+                    binding.btnCardioLight,
+                    binding.btnCardioModerate,
+                    CardioTrainingState.VIGOROUS
+                )
+                changeActivityStatus(binding.ivCardioStatusDone, binding.ivCardioStatusNotDone)
+            }
         }
 
         when (training.dailyStepsStatus) {
-            StepsState.NOT_DONE -> switchStepsButton(
-                binding.btnStepsNotDone,
-                binding.btnStepsDone,
-                StepsState.NOT_DONE
-            )
-            StepsState.DONE -> switchStepsButton(
-                binding.btnStepsDone,
-                binding.btnStepsNotDone,
-                StepsState.DONE
-            )
+            StepsState.NOT_DONE -> {
+                switchStepsButton(
+                    binding.btnStepsNotCompleted,
+                    binding.btnStepsCompleted,
+                    StepsState.NOT_DONE
+                )
+                changeActivityStatus(binding.ivStepsStatusNotDone, binding.ivStepsStatusDone)
+            }
+            StepsState.DONE -> {
+                switchStepsButton(
+                    binding.btnStepsCompleted,
+                    binding.btnStepsNotCompleted,
+                    StepsState.DONE
+                )
+                changeActivityStatus(binding.ivStepsStatusDone, binding.ivStepsStatusNotDone)
+            }
         }
     }
 
+    private fun changeActivityStatus(visibleIndicator: ImageView, invisibleIndicator: ImageView) {
+        visibleIndicator.visibility = View.VISIBLE
+        invisibleIndicator.visibility = View.GONE
+    }
+
     private fun setupOnClickListeners() {
+
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_training_to_navigation_home)
         }
+
         binding.btnStrengthLight.setOnClickListener {
             switchStrengthButton(
                 clickedButton = binding.btnStrengthLight,
@@ -178,18 +210,18 @@ class TrainingFragment : Fragment() {
             )
         }
 
-        binding.btnStepsNotDone.setOnClickListener {
+        binding.btnStepsNotCompleted.setOnClickListener {
             switchStepsButton(
-                clickedButton = binding.btnStepsNotDone,
-                defaultButton = binding.btnStepsDone,
+                clickedButton = binding.btnStepsNotCompleted,
+                defaultButton = binding.btnStepsCompleted,
                 toState = StepsState.NOT_DONE
             )
         }
 
-        binding.btnStepsDone.setOnClickListener {
+        binding.btnStepsCompleted.setOnClickListener {
             switchStepsButton(
-                clickedButton = binding.btnStepsDone,
-                defaultButton = binding.btnStepsNotDone,
+                clickedButton = binding.btnStepsCompleted,
+                defaultButton = binding.btnStepsNotCompleted,
                 toState = StepsState.DONE
             )
         }
@@ -216,9 +248,11 @@ class TrainingFragment : Fragment() {
         if (trainingViewModel.strengthTrainingState == toState) {
             trainingViewModel.strengthTrainingState = StrengthTrainingState.NONE
             setDefaultButtonStyle(clickedButton)
+            changeActivityStatus(binding.ivStrengthStatusNotDone, binding.ivStrengthStatusDone)
             return
         }
 
+        changeActivityStatus(binding.ivStrengthStatusDone, binding.ivStrengthStatusNotDone)
         setClickedButtonStyle(clickedButton)
         setDefaultButtonStyle(defaultButtonOne)
         setDefaultButtonStyle(defaultButtonTwo)
@@ -235,9 +269,11 @@ class TrainingFragment : Fragment() {
         if (trainingViewModel.cardioTrainingState == toState) {
             trainingViewModel.cardioTrainingState = CardioTrainingState.NONE
             setDefaultButtonStyle(clickedButton)
+            changeActivityStatus(binding.ivCardioStatusNotDone, binding.ivCardioStatusDone)
             return
         }
 
+        changeActivityStatus(binding.ivCardioStatusDone, binding.ivCardioStatusNotDone)
         setClickedButtonStyle(clickedButton)
         setDefaultButtonStyle(defaultButtonOne)
         setDefaultButtonStyle(defaultButtonTwo)
@@ -251,6 +287,11 @@ class TrainingFragment : Fragment() {
     ) {
         setClickedButtonStyle(clickedButton)
         setDefaultButtonStyle(defaultButton)
+        if (toState == StepsState.NOT_DONE) {
+            changeActivityStatus(binding.ivStepsStatusNotDone, binding.ivStepsStatusDone)
+        } else {
+            changeActivityStatus(binding.ivStepsStatusDone, binding.ivStepsStatusNotDone)
+        }
         trainingViewModel.dailyStepsStatus = toState
     }
 

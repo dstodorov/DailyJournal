@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#353535"
+    android:background="@drawable/activity_background"
     android:padding="@dimen/master_padding"
     tools:context=".ui.training.TrainingFragment">
 
@@ -70,6 +70,26 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/strengthHorizontalLine"
         app:layout_constraintStart_toEndOf="@id/ivStrengthImage" />
+
+    <ImageView
+        android:id="@+id/ivStrengthStatusDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/strengthHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStrengthStatusNotDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_not_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/strengthHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/layoutStrengthTraining"
@@ -139,6 +159,26 @@
         app:layout_constraintBottom_toTopOf="@id/cardioHorizontalLine"
         app:layout_constraintStart_toEndOf="@id/ivCardioImage" />
 
+    <ImageView
+        android:id="@+id/ivCardioStatusDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/cardioHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivCardioStatusNotDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_not_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/cardioHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <LinearLayout
         android:id="@+id/layoutCardioTraining"
         android:layout_width="match_parent"
@@ -198,6 +238,7 @@
         app:layout_constraintStart_toEndOf="@id/ivStepsImage" />
 
     <TextView
+        android:id="@+id/tvDailyStepsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -212,6 +253,7 @@
         android:id="@+id/etSteps"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:autofillHints="Number of steps"
         android:backgroundTint="@color/button_clicked_color"
         android:hint="@string/empty_field"
@@ -222,7 +264,29 @@
         android:textColorHint="@color/button_clicked_color"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvDailyStepsLabel" />
+
+    <ImageView
+        android:id="@+id/ivStepsStatusDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStepsStatusNotDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_not_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/stepsHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <LinearLayout
         android:id="@+id/layoutSteps"
@@ -235,22 +299,23 @@
         app:layout_constraintTop_toBottomOf="@id/stepsHorizontalLine">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStepsNotDone"
+            android:id="@+id/btnStepsNotCompleted"
             style="@style/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
             android:layout_weight="1"
-            android:text="@string/steps_not_done" />
+            android:text="@string/steps_not_completed" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStepsDone"
+            android:id="@+id/btnStepsCompleted"
             style="@style/defaultButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_weight="1"
-            android:text="@string/steps_done" />
+            android:padding="0dp"
+            android:text="@string/steps_completed" />
     </LinearLayout>
 
     <ImageView
