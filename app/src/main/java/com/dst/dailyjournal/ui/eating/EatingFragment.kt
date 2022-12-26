@@ -26,12 +26,8 @@ class EatingFragment : Fragment() {
         val root = binding.root
 
         val diaryViewModel =
-            ViewModelProvider(this).get(EatingViewModel::class.java)
+            ViewModelProvider(this)[EatingViewModel::class.java]
 
-        val textView: TextView = binding.textEating
-        diaryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
 
         return root
     }

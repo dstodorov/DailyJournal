@@ -26,4 +26,9 @@
     <string name="description_strength_training_image">Strength Training Image</string>
     <string name="sample_date_text">24 Aug 2022</string>
     <string name="empty_field" />
+    <string name="eating_label">Eating</string>
+    <string name="healthy_eating_label">Healthy Eating</string>
+    <string name="eating_type_bad">BAD</string>
+    <string name="eating_type_average">AVERAGE</string>
+    <string name="eating_type_great">GREAT</string>
 </resources>

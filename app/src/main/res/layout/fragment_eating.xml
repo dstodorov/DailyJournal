@@ -3,19 +3,157 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#424242"
+    android:padding="@dimen/master_padding">
+
 
     <TextView
-        android:id="@+id/text_eating"
-        android:layout_width="match_parent"
+        android:id="@+id/tvEatingLabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
+        android:text="@string/title_eating"
+        android:textColor="@color/button_clicked_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEatingDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sample_date_text"
+        android:textColor="@color/button_clicked_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvEatingLabel" />
+
+    <View
+        android:id="@+id/horizontalLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="4dp"
+        android:alpha="1"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/tvEatingLabel" />
+
+    <ImageView
+        android:id="@+id/ivEatingImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/description_strength_training_image"
+        android:src="@drawable/eating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontalLine" />
+
+    <View
+        android:id="@+id/eatingHorizontalLine"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:alpha="1"
+        android:background="@color/button_clicked_color"
+        app:layout_constraintBottom_toBottomOf="@id/ivEatingImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivEatingImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/healthy_eating_label"
+        android:textColor="@color/button_clicked_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/eatingHorizontalLine"
+        app:layout_constraintStart_toEndOf="@id/ivEatingImage" />
+
+    <ImageView
+        android:id="@+id/ivStrengthStatusDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/eatingHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivStrenthStatusNotDone"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/status_not_done"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/eatingHorizontalLine"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutStrengthTraining"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eatingHorizontalLine">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStrengthLight"
+            style="@style/defaultButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/eating_type_bad" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStrengthModerate"
+            style="@style/defaultButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:text="@string/eating_type_average" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStrengthHeavy"
+            style="@style/defaultButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/eating_type_great" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:contentDescription="@string/description_back_button"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@id/btnSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnSave" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        style="button"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:backgroundTint="#4CAF50"
+        android:shadowColor="@color/black"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="2"
+        android:text="@string/button_save_text"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
