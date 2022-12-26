@@ -1,7 +1,6 @@
 package com.dst.dailyjournal.di
 
 import android.app.Application
-import android.provider.DocumentsContract.Root
 import androidx.room.Room
 import com.dst.dailyjournal.core.data.data_source.DailyJournalDatabase
 import com.dst.dailyjournal.training.data.repository.TrainingRepositoryImpl
