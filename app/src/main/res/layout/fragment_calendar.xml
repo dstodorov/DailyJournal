@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.calendar.CalendarFragment">
+    tools:context=".ui.calendar.CalendarFragment"
+    android:background="@color/purple_200">
 
     <TextView
         android:id="@+id/text_calendar"
@@ -19,4 +20,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:headerColor="@color/purple_200"
+        app:headerLabelColor="@color/white"
+        android:backgroundTintMode="screen"
+        app:pagesColor="@color/purple_200"
+        app:daysLabelsColor="@color/white"
+        app:abbreviationsBarColor="@color/purple_200"
+        app:abbreviationsLabelsColor="#F44336"
+        android:background="@color/purple_200"
+        app:eventsEnabled="true"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

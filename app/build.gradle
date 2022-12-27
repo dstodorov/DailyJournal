@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.dst.dailyjournal'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.dst.dailyjournal"
         minSdk 27
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -35,7 +35,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-
 }
 
 dependencies {
@@ -70,6 +69,10 @@ dependencies {
 
     // Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.4.3"
+
+    //Material-Calendar-View
+    implementation 'com.applandeo:material-calendar-view:1.7.0'
+    implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
 }
 
 kapt {

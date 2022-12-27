@@ -7,7 +7,7 @@ import java.util.Date
 @Entity(tableName = "trainings")
 data class Training(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int = 0,
     var trainingDate: Date,
     var strengthTraining: StrengthTrainingState = StrengthTrainingState.NONE,
     var cardioTraining: CardioTrainingState = CardioTrainingState.NONE,

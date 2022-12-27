@@ -34,7 +34,6 @@ class EatingViewModel @Inject constructor(
 
     private var _currentEating = MutableLiveData<Eating>().apply {
         Eating(
-            0,
             eatingDate = date!!
         )
     }
@@ -47,9 +46,9 @@ class EatingViewModel @Inject constructor(
 
             if (todayEating == null) {
                 _currentEating.value = Eating(
-                    0,
                     eatingDate = date
                 )
+
                 return@launch
             }
 
@@ -64,8 +63,9 @@ class EatingViewModel @Inject constructor(
         currentEating.value?.eatingDate = date!!
         currentEating.value?.eatingState = eatingState
 
-        viewModelScope.launch {
-            eatingUseCases.addEating(currentEating.value!!)
-        }
+            viewModelScope.launch {
+                eatingUseCases.addEating(currentEating.value!!)
+            }
+
     }
 }

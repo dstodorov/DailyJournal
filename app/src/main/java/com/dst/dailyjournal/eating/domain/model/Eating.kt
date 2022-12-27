@@ -7,7 +7,7 @@ import java.util.*
 @Entity(tableName = "meals")
 data class Eating(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int = 0,
     var eatingDate: Date,
     var eatingState: EatingState = EatingState.NONE
 )

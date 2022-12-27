@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.applandeo.materialcalendarview.EventDay
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener
+import com.applandeo.materialcalendarview.listeners.OnDayLongClickListener
 import com.dst.dailyjournal.databinding.FragmentCalendarBinding
+
 
 class CalendarFragment : Fragment() {
 
@@ -33,6 +37,47 @@ class CalendarFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        val calendar = Calendar.getInstance()
+//        val events = mutableListOf<EventDay>()
+//
+//
+//        val bitmap1 = BitmapFactory.decodeResource(resources, R.drawable.ic_dot)
+//        val bitmap2 = BitmapFactory.decodeResource(resources, R.drawable.ic_dot)
+//        val bitmap3 = BitmapFactory.decodeResource(resources, R.drawable.ic_dot)
+//
+//        val layer1 = BitmapDrawable(
+//            requireContext().resources,
+//            bitmap1
+//        )
+//        val layer2 = BitmapDrawable(
+//            requireContext().resources,
+//            bitmap2
+//        )
+//        val layer3 = BitmapDrawable(
+//            requireContext().resources,
+//            bitmap3
+//        )
+//        val layers = arrayOf(layer1, layer2, layer3)
+//
+//        val layerDrawable = LayerDrawable(layers)
+//
+//        events.add(EventDay(calendar, layerDrawable))
+//
+//        binding.calendarView.setEvents(events)
+
+        binding.calendarView.setOnDayClickListener(object : OnDayClickListener {
+            override fun onDayClick(eventDay: EventDay) {
+                println(eventDay.calendar.time)
+            }
+
+        })
+
+
     }
 
     override fun onDestroyView() {
