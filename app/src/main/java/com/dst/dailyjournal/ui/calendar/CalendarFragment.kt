@@ -86,7 +86,6 @@ class CalendarFragment : Fragment() {
                 }
                 findNavController().navigate(R.id.navigation_home, params, navOptions)
             }
-
         })
 
 

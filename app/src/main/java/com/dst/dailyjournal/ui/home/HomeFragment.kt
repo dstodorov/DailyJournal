@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.applandeo.materialcalendarview.EventDay
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentHomeBinding
+import com.dst.dailyjournal.ui.training.TrainingViewModel
 
 class HomeFragment : Fragment() {
 
@@ -20,14 +22,13 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -38,23 +39,46 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (arguments?.getLong("date") != null) {
+            homeViewModel.setBundle(requireArguments())
+        }
+
         binding.btnTraining.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_navigation_home_to_navigation_training,
-                arguments
-            )
+            if (homeViewModel.bundle.containsKey("date")) {
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_navigation_training,
+                    homeViewModel.bundle
+                )
+            } else {
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_navigation_training
+                )
+            }
         }
         binding.btnDiary.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_navigation_home_to_navigation_diary,
-                arguments
-            )
+            if (homeViewModel.bundle.containsKey("date")) {
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_navigation_diary,
+                    homeViewModel.bundle
+                )
+            } else {
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_navigation_diary
+                )
+            }
         }
+
         binding.btnEating.setOnClickListener {
-            findNavController().navigate(
-                R.id.action_navigation_home_to_navigation_eating,
-                arguments
-            )
+            if (homeViewModel.bundle.containsKey("date")) {
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_navigation_eating,
+                    homeViewModel.bundle
+                )
+            } else {
+                findNavController().navigate(
+                    R.id.action_navigation_home_to_navigation_eating
+                )
+            }
         }
     }
 
