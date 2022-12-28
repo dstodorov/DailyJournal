@@ -7,9 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
+import androidx.navigation.PopUpToBuilder
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.applandeo.materialcalendarview.EventDay
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.applandeo.materialcalendarview.listeners.OnDayLongClickListener
+import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentCalendarBinding
 
 
@@ -72,7 +77,14 @@ class CalendarFragment : Fragment() {
 
         binding.calendarView.setOnDayClickListener(object : OnDayClickListener {
             override fun onDayClick(eventDay: EventDay) {
-                println(eventDay.calendar.time)
+                val params = Bundle()
+                params.putLong("date", eventDay.calendar.time.time)
+                val navOptions = navOptions {
+                    popUpTo(R.id.navigation_home) {
+                        inclusive = true
+                    }
+                }
+                findNavController().navigate(R.id.navigation_home, params, navOptions)
             }
 
         })

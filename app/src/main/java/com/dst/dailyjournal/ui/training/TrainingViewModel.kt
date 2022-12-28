@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dst.dailyjournal.core.util.DateTools
 import com.dst.dailyjournal.training.domain.model.CardioTrainingState
 import com.dst.dailyjournal.training.domain.model.StepsState
 import com.dst.dailyjournal.training.domain.model.StrengthTrainingState
@@ -31,7 +32,7 @@ class TrainingViewModel @Inject constructor(
 
     val currentDate: LiveData<String> = _currentDate
 
-    val date = SimpleDateFormat("dd MMM yyyy", Locale.US).parse(currentDate.value.toString())
+    var date = SimpleDateFormat("dd MMM yyyy", Locale.US).parse(currentDate.value.toString())
 
     private var _currentTraining = MutableLiveData<Training>().apply {
         Training(
@@ -79,4 +80,8 @@ class TrainingViewModel @Inject constructor(
         }
     }
 
+    fun setCurrentDate(date: Date) {
+        val dateToString = DateTools.dateToString("dd MMM yyyy", date)
+        this.date = SimpleDateFormat("dd MMM yyyy", Locale.US).parse(dateToString)
+    }
 }

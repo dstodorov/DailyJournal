@@ -45,6 +45,10 @@ class TrainingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (arguments?.getLong("date") != null) {
+            trainingViewModel.setCurrentDate(Date(arguments?.getLong("date")!!))
+        }
+
         trainingViewModel.loadCurrentDayTraining()
 
         trainingViewModel.currentTraining.observe(viewLifecycleOwner) {

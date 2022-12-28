@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import com.applandeo.materialcalendarview.EventDay
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentHomeBinding
 
@@ -31,10 +32,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        val textView: TextView = binding.textHome
-//        homeViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
         return root
     }
 
@@ -42,7 +39,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnTraining.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_navigation_training)
+            findNavController().navigate(
+                R.id.action_navigation_home_to_navigation_training,
+                arguments
+            )
         }
         binding.btnDiary.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_home_to_navigation_diary)
