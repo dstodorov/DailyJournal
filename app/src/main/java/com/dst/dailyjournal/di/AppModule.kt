@@ -3,6 +3,11 @@ package com.dst.dailyjournal.di
 import android.app.Application
 import androidx.room.Room
 import com.dst.dailyjournal.core.data.data_source.DailyJournalDatabase
+import com.dst.dailyjournal.diary.data.repository.NoteRepositoryImpl
+import com.dst.dailyjournal.diary.domain.repository.NoteRepository
+import com.dst.dailyjournal.diary.domain.use_case.AddNote
+import com.dst.dailyjournal.diary.domain.use_case.GetNoteByDate
+import com.dst.dailyjournal.diary.domain.use_case.NoteUsesCases
 import com.dst.dailyjournal.eating.data.repository.EatingRepositoryImpl
 import com.dst.dailyjournal.eating.domain.repository.EatingRepository
 import com.dst.dailyjournal.eating.domain.use_case.AddEating
@@ -60,6 +65,21 @@ object AppModule {
         return EatingUseCases(
             AddEating(repository),
             GetEatingByDate(repository)
+        )
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoteRepository(database: DailyJournalDatabase): NoteRepository {
+        return NoteRepositoryImpl(database.noteDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNoteUseCases(repository: NoteRepository): NoteUsesCases {
+        return NoteUsesCases(
+            AddNote(repository),
+            GetNoteByDate(repository)
         )
     }
 }

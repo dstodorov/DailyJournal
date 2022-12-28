@@ -27,10 +27,12 @@ class DiaryFragment : Fragment() {
         val diaryViewModel =
             ViewModelProvider(this).get(DiaryViewModel::class.java)
 
-        val textView: TextView = binding.textDiary
-        diaryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textDiary
+//        diaryViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
+
+
 
         return root
     }
