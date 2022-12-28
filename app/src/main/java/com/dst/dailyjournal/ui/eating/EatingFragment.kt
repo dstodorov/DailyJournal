@@ -43,6 +43,10 @@ class EatingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (arguments?.getLong("date") != null) {
+            eatingViewModel.setCurrentDate(Date(arguments?.getLong("date")!!))
+        }
+
         eatingViewModel.loadCurrentDayEating()
 
         eatingViewModel.currentEating.observe(viewLifecycleOwner) {

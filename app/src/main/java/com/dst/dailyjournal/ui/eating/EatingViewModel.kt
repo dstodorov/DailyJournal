@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.dst.dailyjournal.core.util.DateTools
 import com.dst.dailyjournal.eating.domain.model.Eating
 import com.dst.dailyjournal.eating.domain.model.EatingState
 import com.dst.dailyjournal.eating.domain.use_case.EatingUseCases
@@ -30,7 +31,8 @@ class EatingViewModel @Inject constructor(
 
     val currentDate: LiveData<String> = _currentDate
 
-    val date = SimpleDateFormat("dd MMM yyyy", Locale.US).parse(currentDate.value.toString())
+    private var date =
+        SimpleDateFormat("dd MMM yyyy", Locale.US).parse(currentDate.value.toString())
 
     private var _currentEating = MutableLiveData<Eating>().apply {
         Eating(
@@ -63,9 +65,13 @@ class EatingViewModel @Inject constructor(
         currentEating.value?.eatingDate = date!!
         currentEating.value?.eatingState = eatingState
 
-            viewModelScope.launch {
-                eatingUseCases.addEating(currentEating.value!!)
-            }
+        viewModelScope.launch {
+            eatingUseCases.addEating(currentEating.value!!)
+        }
+    }
 
+    fun setCurrentDate(date: Date) {
+        val dateToString = DateTools.dateToString("dd MMM yyyy", date)
+        this.date = SimpleDateFormat("dd MMM yyyy", Locale.US).parse(dateToString)
     }
 }

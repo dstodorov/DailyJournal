@@ -45,10 +45,16 @@ class HomeFragment : Fragment() {
             )
         }
         binding.btnDiary.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_navigation_diary)
+            findNavController().navigate(
+                R.id.action_navigation_home_to_navigation_diary,
+                arguments
+            )
         }
         binding.btnEating.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_home_to_navigation_eating)
+            findNavController().navigate(
+                R.id.action_navigation_home_to_navigation_eating,
+                arguments
+            )
         }
     }
 
