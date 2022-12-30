@@ -4,46 +4,166 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3E3E3E"
+    android:background="@drawable/menu_background"
+    android:padding="@dimen/master_padding"
     tools:context=".ui.home.HomeFragment">
 
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/content_description"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnTraining"
-        android:layout_width="150dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="training"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo" />
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        app:layout_constraintVertical_bias="0.45">
 
-    <Button
-        android:id="@+id/btnDiary"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="diary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTraining" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btnTraining"
+            android:layout_width="350dp"
+            android:layout_height="93dp"
+            android:elevation="2dp"
+            android:src="@drawable/training_menu_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnEating"
-        android:layout_width="150dp"
+        <ImageView
+            android:id="@+id/trainingIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="@string/content_description"
+            android:elevation="3dp"
+            android:src="@drawable/strength"
+            app:layout_constraintEnd_toEndOf="@id/btnTraining"
+            app:layout_constraintStart_toStartOf="@id/btnTraining"
+            app:layout_constraintTop_toTopOf="@id/btnTraining" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="@string/main_menu_training"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/btnTraining"
+            app:layout_constraintStart_toStartOf="@id/btnTraining"
+            app:layout_constraintTop_toBottomOf="@id/trainingIcon" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btnDiary"
+            android:layout_width="350dp"
+            android:layout_height="93dp"
+            android:layout_marginTop="1dp"
+            android:elevation="2dp"
+            android:src="@drawable/diary_menu_button"
+            app:layout_constraintBottom_toTopOf="@+id/btnEating"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnTraining" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:focusable="false"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="@string/main_menu_diary"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/btnDiary"
+            app:layout_constraintStart_toStartOf="@id/btnDiary"
+            app:layout_constraintTop_toBottomOf="@id/diaryIcon" />
+
+        <ImageView
+            android:id="@+id/diaryIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/content_description"
+            android:elevation="3dp"
+            android:src="@drawable/book"
+            app:layout_constraintEnd_toEndOf="@id/btnDiary"
+            app:layout_constraintStart_toStartOf="@id/btnDiary"
+            app:layout_constraintTop_toTopOf="@id/btnDiary" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/btnEating"
+            android:layout_width="350dp"
+            android:layout_height="93dp"
+            android:layout_marginTop="1dp"
+            android:elevation="2dp"
+            android:focusable="false"
+            android:src="@drawable/eating_menu_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDiary" />
+
+        <ImageView
+            android:id="@+id/eatingIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/content_description"
+            android:elevation="3dp"
+            android:src="@drawable/eating"
+            app:layout_constraintEnd_toEndOf="@id/btnEating"
+            app:layout_constraintStart_toStartOf="@id/btnEating"
+            app:layout_constraintTop_toTopOf="@id/btnEating" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:focusable="false"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="5"
+            android:text="@string/main_menu_eating"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@id/btnEating"
+            app:layout_constraintStart_toStartOf="@id/btnEating"
+            app:layout_constraintTop_toBottomOf="@id/eatingIcon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="eating"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/sample_date_text"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDiary" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        app:layout_constraintVertical_bias="0.4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

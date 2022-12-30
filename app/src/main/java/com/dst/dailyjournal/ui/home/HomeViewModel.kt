@@ -41,5 +41,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     fun setCurrentDate(date: Date) {
         val dateToString = DateTools.dateToString("dd MMM yyyy", date)
         this.date = SimpleDateFormat("dd MMM yyyy", Locale.US).parse(dateToString)
+        this._currentDate.value = dateToString
     }
 }

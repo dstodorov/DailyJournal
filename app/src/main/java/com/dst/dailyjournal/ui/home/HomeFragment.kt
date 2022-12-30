@@ -32,6 +32,8 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+
+
         return root
     }
 
@@ -43,11 +45,15 @@ class HomeFragment : Fragment() {
             homeViewModel.setCurrentDate(Date(arguments?.getLong("date")!!))
         }
 
+        homeViewModel.currentDate.observe(viewLifecycleOwner) {
+            binding.tvDate.text = it
+        }
 
         setupOnClickListeners()
     }
 
     private fun setupOnClickListeners() {
+
         binding.btnTraining.setOnClickListener {
             if (homeViewModel.bundle.containsKey("date")) {
                 findNavController().navigate(
