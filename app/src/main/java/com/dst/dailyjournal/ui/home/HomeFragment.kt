@@ -14,13 +14,12 @@ import com.applandeo.materialcalendarview.EventDay
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentHomeBinding
 import com.dst.dailyjournal.ui.training.TrainingViewModel
+import java.util.*
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
 
@@ -41,8 +40,14 @@ class HomeFragment : Fragment() {
 
         if (arguments?.getLong("date") != null) {
             homeViewModel.setBundle(requireArguments())
+            homeViewModel.setCurrentDate(Date(arguments?.getLong("date")!!))
         }
 
+
+        setupOnClickListeners()
+    }
+
+    private fun setupOnClickListeners() {
         binding.btnTraining.setOnClickListener {
             if (homeViewModel.bundle.containsKey("date")) {
                 findNavController().navigate(

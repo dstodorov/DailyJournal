@@ -55,7 +55,8 @@
             android:padding="8dp"
             android:textColor="@color/black"
             android:textColorHint="@color/purple_200"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:textAlignment="center"/>
     </ScrollView>
 
     <ImageView
