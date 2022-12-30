@@ -31,4 +31,5 @@
     <string name="eating_type_bad">BAD</string>
     <string name="eating_type_average">AVERAGE</string>
     <string name="eating_type_great">GREAT</string>
+    <string name="empty_string" />
 </resources>
