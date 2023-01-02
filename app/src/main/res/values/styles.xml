@@ -8,4 +8,19 @@
         <item name="rippleColor">@color/white</item>
         <item name="backgroundTint">@color/button_default_color</item>
     </style>
+
+    <style name="topCorersSize">
+        <item name="cornerSizeTopLeft">25%</item>
+        <item name="cornerSizeTopRight">25%</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    <style name="middleCorersSize">
+        <item name="cornerSizeBottomLeft">0%</item>
+        <item name="cornerSizeBottomRight">0%</item>
+    </style>
+    <style name="bottomCorersSize">
+        <item name="cornerSizeBottomLeft">25%</item>
+        <item name="cornerSizeBottomRight">25%</item>
+    </style>
 </resources>
