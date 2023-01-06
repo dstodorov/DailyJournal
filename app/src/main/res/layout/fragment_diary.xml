@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/journal"
@@ -39,24 +40,37 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDiaryLabel" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/btnSave"
+        android:screenReaderFocusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintTop_toBottomOf="@id/horizontalLine"
-        app:layout_constraintVertical_bias="0">
+        tools:layout_editor_absoluteX="32dp">
 
-        <EditText
-            android:id="@+id/etText"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilDiaryTextLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/custom_edit_text"
-            android:hint="@string/empty_string"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/purple_200"
-            android:textSize="12sp"
-            android:textAlignment="center"/>
+            android:layout_marginTop="8dp"
+            app:boxBackgroundColor="@color/white"
+            app:helperTextTextColor="#FFD58B"
+            app:layout_constraintBottom_toTopOf="@+id/btnSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+            app:layout_constraintVertical_bias="0.0"
+            app:placeholderTextColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </com.google.android.material.textfield.TextInputLayout>
     </ScrollView>
 
     <ImageView
@@ -84,4 +98,6 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
