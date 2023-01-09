@@ -8,11 +8,17 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.applandeo.materialcalendarview.EventDay
 import com.dst.dailyjournal.R
 import com.dst.dailyjournal.databinding.FragmentHomeBinding
+import com.dst.dailyjournal.diary.domain.model.Note
+import com.dst.dailyjournal.eating.domain.model.Eating
+import com.dst.dailyjournal.training.domain.model.Training
+import com.dst.dailyjournal.ui.diary.DiaryViewModel
+import com.dst.dailyjournal.ui.eating.EatingViewModel
 import com.dst.dailyjournal.ui.training.TrainingViewModel
 import java.util.*
 
@@ -22,6 +28,13 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by activityViewModels()
+    private val trainingViewModel: TrainingViewModel by activityViewModels()
+    private val diaryViewModel: DiaryViewModel by activityViewModels()
+    private val eatingViewModel: EatingViewModel by activityViewModels()
+
+    lateinit var training: Training
+    lateinit var diary: Note
+    lateinit var eating: Eating
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +44,6 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
 
 
         return root
@@ -47,10 +59,38 @@ class HomeFragment : Fragment() {
 
         homeViewModel.currentDate.observe(viewLifecycleOwner) {
             binding.tvDate.text = it
+            trainingViewModel.setCurrentDate(homeViewModel.date!!)
+            eatingViewModel.setCurrentDate(homeViewModel.date!!)
+            diaryViewModel.setCurrentDate(homeViewModel.date!!)
+
+            trainingViewModel.loadCurrentDayTraining()
+            eatingViewModel.loadCurrentDayEating()
+            diaryViewModel.loadCurrentDayDiary()
+        }
+
+        trainingViewModel.currentTraining.observe(viewLifecycleOwner) {
+            binding.tvStrengthStatus.text = it.strengthTraining.name
+            trainingViewModel.strengthTrainingState = it.strengthTraining
+
+            binding.tvCardioStatus.text = it.cardioTraining.name
+            trainingViewModel.cardioTrainingState = it.cardioTraining
+
+            binding.tvSteps.text = it.dailySteps.toString()
+            trainingViewModel.dailyStepsStatus = it.dailyStepsStatus
+        }
+
+        eatingViewModel.currentEating.observe(viewLifecycleOwner) {
+            binding.tvEatingStatus.text = it.eatingState.name
+            eatingViewModel.eatingState = it.eatingState
+        }
+
+        diaryViewModel.currentDiary.observe(viewLifecycleOwner) {
+            binding.etDiary.text = it.text
         }
 
         setupOnClickListeners()
     }
+
 
     private fun setupOnClickListeners() {
 
