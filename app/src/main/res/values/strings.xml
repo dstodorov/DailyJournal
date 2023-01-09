@@ -36,4 +36,5 @@
     <string name="main_menu_training">Training</string>
     <string name="main_menu_diary">Diary</string>
     <string name="main_menu_eating">Eating</string>
+    <string name="edit">edit</string>
 </resources>
