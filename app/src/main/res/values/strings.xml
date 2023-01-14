@@ -4,7 +4,6 @@
     <string name="title_calendar">Calendar</string>
     <string name="title_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_training">Training</string>
     <string name="title_diary">Diary</string>
     <string name="title_eating">Eating</string>
@@ -32,9 +31,5 @@
     <string name="eating_type_average">AVERAGE</string>
     <string name="eating_type_great">GREAT</string>
     <string name="empty_string" />
-    <string name="content_description">contentDescription</string>
-    <string name="main_menu_training">Training</string>
-    <string name="main_menu_diary">Diary</string>
-    <string name="main_menu_eating">Eating</string>
     <string name="edit">edit</string>
 </resources>
