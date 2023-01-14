@@ -29,16 +29,63 @@
             android:padding="@dimen/master_padding"
             tools:context=".ui.home.HomeFragment">
 
-            <ImageView
+            <LinearLayout
+                android:id="@+id/quoteLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                android:translationX="5dp"
+                android:translationY="5dp"
+                android:translationZ="5dp"
+                android:background="@drawable/quote_background"
+                android:elevation="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:padding="0dp"
+                    android:layout_marginStart="5dp"
+                    android:text="“"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:textStyle="italic"/>
+                <TextView
+                    android:id="@+id/tvQuote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    tools:text="Success is peace of mind, which is a direct result of self-satisfaction in knowing you made the effort to become the best of which you are capable."
+                    android:textAlignment="textStart"
+                    android:textColor="@color/button_clicked_color"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/tvAuthor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="viewEnd"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    tools:text="by John Wooden"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+<!--            <ImageView
                 android:id="@+id/ivLogo"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="20dp"
                 android:contentDescription="@string/content_description"
                 android:src="@drawable/logo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/quoteLayout" />-->
 
             <TextView
                 android:id="@+id/tvDate"
@@ -47,11 +94,12 @@
                 android:fontFamily="sans-serif-thin"
                 android:text="@string/sample_date_text"
                 android:textColor="@color/white"
+                android:layout_marginTop="32dp"
                 android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+                app:layout_constraintTop_toBottomOf="@+id/quoteLayout"
                 app:layout_constraintVertical_bias="0" />
 
             <TextView

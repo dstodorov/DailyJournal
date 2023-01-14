@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.applandeo.materialcalendarview.EventDay
 import com.dst.dailyjournal.R
+import com.dst.dailyjournal.core.data.data_source.DailyQuotes
 import com.dst.dailyjournal.databinding.FragmentHomeBinding
 import com.dst.dailyjournal.diary.domain.model.Note
 import com.dst.dailyjournal.eating.domain.model.Eating
@@ -51,6 +52,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val quote = DailyQuotes.getRandomQuote()
+
+        binding.tvQuote.text = quote.quote
+        binding.tvAuthor.text = quote.author
 
         if (arguments?.getLong("date") != null) {
             homeViewModel.setBundle(requireArguments())
